@@ -1,6 +1,11 @@
 #!/bin/bash -ex
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
+if [ -z "$HOME"]; then
+	echo "setting HOME to '/home/ubuntu'..."
+	export HOME=/home/ubuntu
+fi
+
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
